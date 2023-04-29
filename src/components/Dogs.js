@@ -3,38 +3,38 @@ import Dog from "./Dog";
 
 function Dogs() {
     const [dogs, setDogs] = useState([{
-        name: "Luke",
-        age: 7,
-        breed: "Blue Nose",
-        favoriteToy: "Anything he can get his paws on",
-        size: "Large",
+        name: "Duke",
+        age: 2,
+        breed: "Havanese",
+        favoriteToy: "Anything that's his sister's toy",
+        size: "Medium",
         gender: "Male"
     }]);
+
     const [dogForm, setDogForm] = useState(
         {
             name: "",
             age: 1,
             breed: "",
             favoriteToy: "",
-            size: "",
-            gender: ""
+            size: "Medium",
+            gender: "Male"
         }
     )
+    // console.log(dogForm)
 
-    const handleChange = (e) => {
-        console.log(e.target)
+    function handleChange(e) {
+        // console.log(e)
         setDogForm((previousFormState) => ({
             ...previousFormState,
-            [e.target.name] : e.target.value
-
+            [e.target.name]: e.target.value
         }))
-        console.log(dogForm)
     }
 
-    const handleSubmit = (e) => {
-        e.preventdefault
-        setDogs((startingDogs) => ([...startingDogs,
-        dogForm]))
+    function handleSubmit(e) {
+        e.preventDefault();
+        setDogs((startingDogs) => ([...startingDogs, dogForm]))
+        e.target.reset();
     }
 
     return (
@@ -47,7 +47,7 @@ function Dogs() {
                     </div>
                 )
             })}
-            <form onSubmit={(handleSumbit)}>
+            <form onSubmit={handleSubmit}>
                 <label>
                     <span>Name: </span>
                     <input

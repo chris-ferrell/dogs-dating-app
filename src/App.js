@@ -1,25 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Dogs from './components/Dogs';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [likes, setLikes] = useState(0);
+
+  const updateLikes = () => {
+    let currentLikes = likes
+    currentLikes++;
+    setLikes(currentLikes)
+  }
+
+ return(
+    <>
+      <div className="App">
+        <h1> Dogs Dating App </h1>
+      </div>
+      <div className="likes"> 
+          
+          <h2> Number of dogs who like this: {likes}</h2>
+          <button onClick={updateLikes}> Add to the likes </button>
+      
+      </div>
+
+      <Dogs />
+
+    </>
+ )
 }
 
 export default App;
